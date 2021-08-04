@@ -28,4 +28,5 @@ automake --add-missing
 make distcheck
 
 echo "Submitting Jobs"
-qsub sampleshell.sh
+#qsub sampleshell.sh
+qsub fibonacci-0.1.tar.gz
