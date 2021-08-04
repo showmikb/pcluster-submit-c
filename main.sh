@@ -13,6 +13,19 @@ else
   cd $DIR
 fi
 
+if rpm -qa autoconf
+then
+    echo "Proceeding as required installations are present"
+else
+    yum install autoconf
+    yum install automake
+fi
+
+aclocal
+autoconf
+automake --add-missing
+./configure
+make distcheck
 
 echo "Submitting Jobs"
 qsub sampleshell.sh
