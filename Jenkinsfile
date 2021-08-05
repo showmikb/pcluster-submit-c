@@ -14,7 +14,7 @@ environment
         script
         {
           sh 'ls -al'
-          sh 'sh pclustermanage.sh'
+          sh 'sudo sh pclustermanage.sh'
         }
       }
     } 
