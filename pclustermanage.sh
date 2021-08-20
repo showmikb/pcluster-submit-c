@@ -32,7 +32,7 @@ aws s3 cp fibonacci-0.1.tar.gz s3://pcluster-submit-c-artifact/fibonacci-0.1.tar
 echo "DOWNLOADFROM S3"
 aws secretsmanager --region us-east-1 get-secret-value --secret-id divine-showmik.pem --query 'SecretString' --output text > divine-showmik.pem
 chmod 600 divine-showmik.pem
-pcluster  ssh dmscluster -r us-east-1 -i divine-showmik.pem 'bash -s' < main.sh
+pcluster  ssh bosecluster -r us-east-1 -i divine-showmik.pem 'bash -s' < main.sh
 
 
 #sudo yum install git -y
