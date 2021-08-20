@@ -1,17 +1,24 @@
 #!/bin/bash
 #Create Mount Point if not present already
 DIR="efsmount"
-if [ -d "$DIR" ]; then
+if [ -d "/$DIR" ]; then
   # Take action if $DIR exists. #
   echo "${DIR} Present"
-  cd $DIR
+  cd /$DIR
 else 
   echo "Directory $DIR Not Present"
-  mkdir $DIR
+  mkdir /$DIR
   cd $DIR
 fi
 
-sudo mount -t efs -o tls fs-82b99d36:/ $DIR
+if grep -qs '/${DIR} ' /proc/mounts; then
+    echo "It's mounted."
+else
+    echo "It's not mounted."
+    sudo yum install -y amazon-efs-utils
+    sudo mount -t efs -o tls fs-82b99d36:/ /$DIR
+fi
+
 # if rpm -qa autoconf
 # then
 #     echo "Proceeding as required installations are present"
