@@ -10,7 +10,8 @@ else
   mkdir $DIR
   cd $DIR
 fi
-sudo mount -t efs -o tls fs-45dddf94:/ $DIR
+
+sudo mount -t efs -o tls fs-82b99d36:/ $DIR
 # if rpm -qa autoconf
 # then
 #     echo "Proceeding as required installations are present"
